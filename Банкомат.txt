@@ -1,0 +1,77 @@
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+
+	srand(time(NULL));
+
+	setlocale(0, "");
+	int step = 1;
+	int sum;
+	int chet;
+	chet = 20000 + rand() % 100000;
+	int pinCode;
+	int operation;
+	int User = +79831234567;
+
+	
+	while (true)
+	{
+		switch (step)
+		{
+			case 1:
+				cout << "Введите пин код: ";
+				cin >> pinCode;
+			
+				if (pinCode != 6821) {
+					cout << "Вы ввели не правильный пин код, попробуйте ещё раз";
+					step = 1;
+					cout << endl;
+					break;
+				}
+				step = 2;
+				break;
+			case 2:
+				cout << "Выберите операцию: ";
+				cin >> operation;
+				
+				switch (operation)
+				{
+					case 1:
+						cout << "Ваш баланс: " << chet;
+						cout << endl;
+						break;
+		    		case 2:
+						cout << "Введите сумму, которую хотите снять: ";
+
+						cin >> sum;
+
+						if (sum > chet) {
+							cout << "Вы не можете снять больше, чем ваш баланс";
+							cout << endl;
+							cout << " Остаток на счёте: ";
+							cout << chet;
+							cout << endl;
+						}
+						else
+						{
+							chet = chet - sum;
+							cout << "Остаток на счёте " << chet;
+							cout << endl;
+						}
+						break;
+					case 3:
+							cout << "Введите сумму, которую хотите положить на счёт: ";
+							cin >> sum;
+							chet = chet + sum;
+							cout << "Остаток на счёте: " << chet;
+							cout << endl;
+							break;
+				}
+				break;
+		}
+	}
+}
