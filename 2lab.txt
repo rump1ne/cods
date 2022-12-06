@@ -1,0 +1,70 @@
+1.1.8
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	double v=200e-6;
+	double p; //1000
+	cout<<"p(kg/m^3)=";
+	cin>>p;
+	cout<<"A="<<v*p<<"(kg)\n";
+	cout<<endl;
+
+
+}
+
+1.2.8
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    double h;
+    cin>>h;
+    const double R=6350.;
+    cout<<"S="<<((R+h)*(R+h)-R*R);
+    
+}
+
+1.4.8
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    double kg;
+    double p;
+    double o;
+    cout<<"kg";
+    cin>>kg;
+    p = kg*0.454;
+    cout<<"p="<< p <<'\n';
+    cout<<"o="<<(p*16)<<'\n';
+}
+
+3.1.8
+#include <iostream>
+
+using namespace std;
+int main()
+{
+    int num, res=1;
+    cin>>num;
+    if(num%2==0)
+    {
+        for(int i=2; i<=num; i+=2) res*=i;
+        cout<<res;
+    }
+    else
+    {
+        for(int i=1; i<=num; i+=2) res*=i;
+        cout<<res;
+    }
+    cin.get();
+    cin.get();
+    return 0;
+}
+
+3.2.8
