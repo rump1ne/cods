@@ -1,0 +1,58 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+const int SIZE = 10;
+
+int main()
+{
+    float arr[SIZE];
+    float sum = 0, square_sum = 0, mean, variance, std_dev, mean_square;
+    int i;
+
+    // Вводим элементы массива с клавиатуры
+    cout << "Введите " << SIZE << " элементов массива:" << endl;
+    for (i = 0; i < SIZE; i++) {
+        cin >> arr[i];
+        sum += arr[i];
+        square_sum += arr[i]*arr[i];
+    }
+
+    // Вычисляем мат. ожидание, дисперсию, среднее квадратическое отклонение
+    mean = sum / SIZE;
+    mean_square = square_sum / SIZE;
+    variance = mean_square - mean*mean;
+    std_dev = sqrt(variance);
+
+    // Выводим полученные значения на экран
+    cout << "Мат. ожидание: " << mean << endl;
+    cout << "Дисперсия: " << variance << endl;
+    cout << "Среднее квадратическое отклонение: " << std_dev << endl;
+
+    // Производим нормализацию (минимум 0, максимум 1)
+    for (i = 0; i < SIZE; i++) {
+        arr[i] = (arr[i] - arr[0]) / (arr[SIZE-1] - arr[0]);
+    }
+
+    // Выводим нормализованный массив на экран
+    cout << "Нормализованный массив: ";
+    for (i = 0; i < SIZE; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    // Пользователь вводит ещё одно значение с клавиатуры
+    float value;
+    cout << "Введите число для проверки по правилу 3 сигм: ";
+    cin >> value;
+
+    // Определяем попадает ли значение value в правило 3 сигм
+    if (abs(value - mean) < 3*std_dev) {
+        cout << "Значение " << value << " находится в правиле 3 сигм" << endl;
+    } else {
+        cout << "Значение " << value << " не находится в правиле 3 сигм" << endl;
+    }
+
+    return 0;
+}
