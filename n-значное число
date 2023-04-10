@@ -1,0 +1,40 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n, num;
+    int smallest_digit = 9;  // предполагаем, что наименьшая цифра в числе - 9
+    int largest_digit = 0;   // предполагаем, что наибольшая цифра в числе - 0
+
+    // Вводим n-значное натуральное число
+    cout << "Введите натуральное число: ";
+    cin >> num;
+
+    // Определяем количество цифр в числе
+    n = 0;
+    int temp = num;
+    while (temp > 0) {
+        n++;
+        temp /= 10;
+    }
+
+    // Ищем наименьшую и наибольшую цифры в числе
+    for (int i = 0; i < n; i++) {
+        int digit = num % 10;
+        if (digit < smallest_digit) {
+            smallest_digit = digit;
+        }
+        if (digit > largest_digit) {
+            largest_digit = digit;
+        }
+        num /= 10;
+    }
+
+    // Выводим результаты
+    cout << "Наименьшая цифра в числе: " << smallest_digit << endl;
+    cout << "Наибольшая цифра в числе: " << largest_digit << endl;
+
+    return 0;
+}
