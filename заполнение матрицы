@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+    int i, j;
+    int n_rows, n_cols;
+
+    // Вводим количество строк и столбцов матрицы
+    cout << "Введите количество строк матрицы: ";
+    cin >> n_rows;
+    cout << "Введите количество столбцов матрицы: ";
+    cin >> n_cols;
+
+    // Выделяем память для двумерного массива
+    int** arr;
+    arr = (int**)malloc(n_rows * sizeof(int*));
+    for (i = 0; i < n_rows; i++) {
+        arr[i] = (int*)malloc(n_cols * sizeof(int));
+    }
+
+    // Заполняем матрицу случайными числами от 1 до 10
+    for (i = 0; i < n_rows; i++) {
+        for (j = 0; j < n_cols; j++) {
+            arr[i][j] = rand() % 10 + 1;
+        }
+    }
+
+    // Выводим матрицу на экран
+    cout << "Матрица: " << endl;
+    for (i = 0; i < n_rows; i++) {
+        for (j = 0; j < n_cols; j++) {
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    // Освобождаем память, выделенную под массив
+    for (i = 0; i < n_rows; i++) {
+        free(arr[i]);
+    }
+    free(arr);
+
+    return 0;
+}
