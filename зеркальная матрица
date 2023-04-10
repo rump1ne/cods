@@ -1,0 +1,57 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    int i, j;
+
+    // Вводим размерность квадратной матрицы
+    cout << "Введите размерность матрицы: ";
+    cin >> n;
+
+    // Создаем двумерный массив и заполняем его случайными числами
+    int** arr;
+    arr = new int*[n];
+    for (i = 0; i < n; i++) {
+        arr[i] = new int[n];
+        for (j = 0; j < n; j++) {
+            arr[i][j] = rand() % 10 + 1;
+        }
+    }
+
+    // Выводим исходную матрицу
+    cout << "Исходная матрица:" << endl;
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    // Заполняем матрицу зеркально
+    for (i = 0; i < n; i++) {
+        for (j = i; j < n; j++) {
+            arr[i][j] = arr[j][i];
+            arr[j][i] = arr[i][j-i];
+        }
+    }
+
+    // Выводим полученную матрицу
+    cout << "Зеркальная матрица:" << endl;
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    // Освобождаем память, выделенную под массив
+    for (i = 0; i < n; i++) {
+        delete[] arr[i];
+    }
+    delete[] arr;
+
+    return 0;
+}
