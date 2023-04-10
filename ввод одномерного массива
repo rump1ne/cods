@@ -1,0 +1,47 @@
+#include <iostream>
+
+using namespace std;
+
+void bubble_sort(int arr[], int n) {
+    int i, j;
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int tmp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tmp;
+            }
+        }
+    }
+}
+
+int main()
+{
+    int n;
+
+    // Вводим количество элементов в массиве
+    cout << "Введите количество элементов в массиве: ";
+    cin >> n;
+
+    // Создаем массив и заполняем его
+    int* arr = new int[n];
+    for (int i = 0; i < n; i++) {
+        cout << "Введите элемент " << i << ": ";
+        cin >> arr[i];
+    }
+
+    // Сортируем массив пузырьковым методом
+    bubble_sort(arr, n);
+
+    // Выводим отсортированный массив
+    cout << "Отсортированный массив:" << endl;
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    // Освобождаем память, выделенную под массив
+    delete[] arr;
+
+    return 0;
+}
