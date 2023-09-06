@@ -1,0 +1,54 @@
+#include <iostream> 
+using namespace std; 
+int main() 
+{ 
+ const int number = 100; 
+ int A[number + 1], B[number], C[number]; 
+ int chois1, chois2; 
+ setlocale(LC_ALL, "Russian"); 
+  
+ while (!(cin >> chois1)) 
+ { 
+  cout << "Ошибка! Введите число: "; 
+  cin.clear(); 
+  cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+ } 
+ 
+ 
+ while (!(cin >> chois2)) 
+ { 
+  cout << "Ошибка! Введите число: "; 
+  cin.clear(); 
+  cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+ } 
+ 
+ for (int i = 99; i >= 0; i--) 
+ { 
+  int digit = chois1 % 10; 
+  chois1 /= 10; 
+  arr1[i] = digit; 
+ } 
+ for (int i = 99; i >= 0; i--) 
+ { 
+  int digit = chois2 % 10; 
+  chois2 /= 10; 
+  arr2[i] = digit; 
+ } 
+ 
+ 
+ for (int i = 99; i >= 0; i--) 
+ { 
+  int b = arr1[i] + arr2[i]; 
+  if (b >= 10) 
+  { 
+   arr1[i - 1] += 1; 
+   b %= 10; 
+  } 
+  arr3[i] = b; 
+ } 
+ 
+ for (int i = 0; i < number - 1; i++) 
+ { 
+  cout << arr3[i] << " "; 
+ } 
+}
